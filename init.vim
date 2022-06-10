@@ -38,6 +38,7 @@ set relativenumber
 set noswapfile
 set scrolloff=7
 set colorcolumn=79
+set signcolumn=number  " Put the signs to number column (so pyright E, H, W signs don't make text shifting)
 
 set tabstop=4
 set softtabstop=4
