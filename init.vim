@@ -14,6 +14,7 @@ Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'sharkdp/fd'
   Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'jiangmiao/auto-pairs'
 
 " color schemas
 Plug 'morhetz/gruvbox'
