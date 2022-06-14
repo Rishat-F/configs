@@ -10,62 +10,45 @@ repos:
       - id: check-merge-conflict
       - id: debug-statements
 
-  - repo: local
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.961
     hooks:
       - id: mypy
-        name: mypy
-        entry: mypy
-        language: python_venv
-        language_version: "3.10"
-        types_or: ["python", "pyi"]
-        exclude: "dir1/|dir2/|file1|file2"
         args: [--strict]
 
-  - repo: local
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
     hooks:
       - id: isort
-        name: isort
-        entry: isort
-        language: python_venv
-        language_version: "3.10"
+        name: isort (python)
         args: [
           "--profile", "black",  # Compatibility with black
           "--filter-files"
         ]
   # Analog of isort: https://github.com/asottile/reorder_python_imports
 
-  - repo: local
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
     hooks:
       - id: flake8
-        name: flake8
-        entry: flake8
-        language: python_venv
-        language_version: "3.10"
         additional_dependencies: [flake8-docstrings]
         args: [
-          "--exclude=*.toml,*.yaml,*.yml,*.json",
           "--max-doc-length=79",
           "--max-line-length=88",  # Compatibility with black
           "--extend-ignore=E203"  # Compatibility with black
         ]
   # List of all Flake8 rules: curl https://www.flake8rules.com/api/rules.json
 
-  - repo: local
+  - repo:  https://github.com/psf/black
+    rev: 22.3.0
     hooks:
       - id: black
-        name: black
-        entry: black
-        language: python_venv
-        language_version: "3.10"
-        types_or: [python, pyi]  # Check only python files
+        language_version: python3.10
         exclude: "dir1/|dir2/|file1|file2"
 
-  - repo: local
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: v2.4
     hooks:
       - id: vulture
-        name: vulture
-        entry: vulture
-        language: python_venv
-        language_version: "3.10"
-        args: ["--exclude", "*.toml,*yaml,*.yml", "--min-confidence", "60"]
+        args: [".", "--exclude", "*venv*,*.toml,*yaml,*.yml", "--min-confidence", "60"]
   # Analog of vulture: https://github.com/asottile/dead
