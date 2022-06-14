@@ -1,0 +1,71 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-json
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: debug-statements
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: python_venv
+        language_version: "3.10"
+        types_or: ["python", "pyi"]
+        exclude: "dir1/|dir2/|file1|file2"
+        args: [--strict]
+
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort
+        entry: isort
+        language: python_venv
+        language_version: "3.10"
+        args: [
+          "--profile", "black",  # Compatibility with black
+          "--filter-files"
+        ]
+  # Analog of isort: https://github.com/asottile/reorder_python_imports
+
+  - repo: local
+    hooks:
+      - id: flake8
+        name: flake8
+        entry: flake8
+        language: python_venv
+        language_version: "3.10"
+        additional_dependencies: [flake8-docstrings]
+        args: [
+          "--exclude=*.toml,*.yaml,*.yml,*.json",
+          "--max-doc-length=79",
+          "--max-line-length=88",  # Compatibility with black
+          "--extend-ignore=E203"  # Compatibility with black
+        ]
+  # List of all Flake8 rules: curl https://www.flake8rules.com/api/rules.json
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: black
+        language: python_venv
+        language_version: "3.10"
+        types_or: [python, pyi]  # Check only python files
+        exclude: "dir1/|dir2/|file1|file2"
+
+  - repo: local
+    hooks:
+      - id: vulture
+        name: vulture
+        entry: vulture
+        language: python_venv
+        language_version: "3.10"
+        args: ["--exclude", "*.toml,*yaml,*.yml", "--min-confidence", "60"]
+  # Analog of vulture: https://github.com/asottile/dead
