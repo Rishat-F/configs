@@ -59,7 +59,7 @@ map <Leader> <Plug>(easymotion-prefix)
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,Ё~
 
 " My macros
-let @u="g~w"  " Switch case of the word righter cursor
+let @c="g~w"  " Switch case of the word righter cursor
 
 " Disable python3 warning for nvim's ':checkhealth' command
 let g:loaded_python3_provider = 0
