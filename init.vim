@@ -81,6 +81,12 @@ let g:loaded_perl_provider = 0
   nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 
+" Remember position of last edit and return on reopen
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+
 
 lua << EOF
 -- Set completeopt to have a better completion experience
