@@ -24,7 +24,7 @@ Plug 'https://github.com/YorickPeterse/happy_hacking.vim.git'
 call plug#end()
 
 
-colorscheme OceanicNext
+colorscheme gruvbox
 
 if (has('termguicolors'))
   set termguicolors
